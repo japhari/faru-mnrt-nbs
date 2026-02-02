@@ -1,0 +1,25 @@
+{
+  "name": "faru-mnrt-nbs",
+  "version": "0.1.0",
+  "description": "Faru MNRT NBS mediator",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "dotenv": "^16.0.1",
+    "mongodb": "^7.0.0",
+    "openhim-mediator-utils": "^0.2.4",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}

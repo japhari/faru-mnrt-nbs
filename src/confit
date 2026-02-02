@@ -1,0 +1,19 @@
+  curl -X POST http://localhost:8095/nbs/sync \
+    -H "Content-Type: application/json" \
+    -d '{"startDate":"2025-01-01","endDate":"2026-01-31"}'
+
+
+
+curl "http://localhost:8095/nbs/snapshots?source=NCAA&startDate=2025-01-01&endDate=2026-01-31&limit=5"
+curl "http://localhost:8095/nbs/snapshots?source=TANAPA&startDate=2025-01-01&endDate=2026-01-31&limit=5"
+curl "http://localhost:8095/nbs/snapshots?source=TFS&startDate=2025-01-01&endDate=2026-01-31&limit=5"
+
+
+curl "http://localhost:8095/api/v1/indicator-admin-areas?limit=5"
+curl "http://localhost:8095/api/v1/mnrt-indicators?limit=5"
+curl "http://localhost:8095/api/v1/indicator-values?limit=5"
+
+
+> curl -s "http://localhost:8095/nbs-data?period=Quarterly&requestTime=2025Q4&indicatorId=MNRT-001"
+
+> curl -s "http://localhost:8095/nbs-data?period=Quarterly&requestTime=2025Q1&indicatorId=MNRT-001"
