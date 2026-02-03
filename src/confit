@@ -17,3 +17,19 @@ curl "http://localhost:8095/api/v1/indicator-values?limit=5"
 > curl -s "http://localhost:8095/nbs-data?period=Quarterly&requestTime=2025Q4&indicatorId=MNRT-001"
 
 > curl -s "http://localhost:8095/nbs-data?period=Quarterly&requestTime=2025Q1&indicatorId=MNRT-001"
+
+
+curl -s "http://127.0.0.1:8095/api/v1/indicator-admin-areas?limit=3"
+
+curl -s "http://127.0.0.1:8095/api/v1/disaggregations?limit=3"
+
+
+curl -s "http://127.0.0.1:8095/api/v1/mnrt-indicators?limit=3"
+
+
+curl -s "http://127.0.0.1:8095/api/v1/institutions?limit=3"
+
+
+curl -X POST "http://127.0.0.1:8095/api/v1/indicator-admin-areas" \
+  -H "Content-Type: application/json" \
+  -d '{"id": 43, "name": "New Area", "code": "NEW"}'

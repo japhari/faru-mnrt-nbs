@@ -26,6 +26,12 @@
   ],
   "configDefs": [
     {
+      "param": "enabled",
+      "displayName": "Enabled",
+      "description": "Enable mediator",
+      "type": "bool"
+    },
+    {
       "param": "schedule",
       "displayName": "Schedule",
       "description": "Daily schedule settings",
@@ -101,120 +107,6 @@
       ]
     },
     {
-      "param": "seeding",
-      "displayName": "Seeding",
-      "description": "Seed normalized collections from API payloads",
-      "type": "struct",
-      "values": [],
-      "template": [
-        {
-          "param": "enabled",
-          "displayName": "Enabled",
-          "description": "Enable seeding into indicator collections",
-          "type": "bool"
-        },
-        {
-          "param": "collections",
-          "displayName": "Collections",
-          "description": "Target collection names",
-          "type": "struct",
-          "values": [],
-          "template": [
-            {
-              "param": "indicatorGroups",
-              "displayName": "Indicator groups",
-              "description": "Collection for indicator groups",
-              "type": "string"
-            },
-            {
-              "param": "indicators",
-              "displayName": "Indicators",
-              "description": "Collection for indicators",
-              "type": "string"
-            },
-            {
-              "param": "adminAreas",
-              "displayName": "Admin areas",
-              "description": "Collection for admin areas",
-              "type": "string"
-            },
-            {
-              "param": "disaggregations",
-              "displayName": "Disaggregations",
-              "description": "Collection for disaggregations",
-              "type": "string"
-            },
-            {
-              "param": "institutions",
-              "displayName": "Institutions",
-              "description": "Collection for institutions",
-              "type": "string"
-            },
-            {
-              "param": "disaggregationsIndicators",
-              "displayName": "Disaggregations indicators",
-              "description": "Collection for disaggregations/indicators",
-              "type": "string"
-            },
-            {
-              "param": "indicatorValues",
-              "displayName": "Indicator values",
-              "description": "Collection for indicator data values",
-              "type": "string"
-            }
-          ]
-        },
-        {
-          "param": "staticData",
-          "displayName": "Static seed data",
-          "description": "Seed data for indicator groups, admin areas, and disaggregations",
-          "type": "struct",
-          "values": [],
-          "template": [
-            {
-              "param": "indicatorGroups",
-              "displayName": "Indicator groups",
-              "description": "List of indicator groups",
-              "type": "struct",
-              "values": [],
-              "template": [
-                { "param": "id", "displayName": "ID", "type": "string" },
-                { "param": "name", "displayName": "Name", "type": "string" }
-              ],
-              "array": true
-            },
-            {
-              "param": "adminAreas",
-              "displayName": "Admin areas",
-              "description": "List of admin areas",
-              "type": "struct",
-              "values": [],
-              "template": [
-                { "param": "id", "displayName": "ID", "type": "string" },
-                { "param": "name", "displayName": "Name", "type": "string" },
-                { "param": "code", "displayName": "Code", "type": "string" }
-              ],
-              "array": true
-            },
-            {
-              "param": "disaggregations",
-              "displayName": "Disaggregations",
-              "description": "List of disaggregations",
-              "type": "struct",
-              "values": [],
-              "template": [
-                { "param": "id", "displayName": "ID", "type": "string" },
-                { "param": "code", "displayName": "Code", "type": "string" },
-                { "param": "name", "displayName": "Name", "type": "string" },
-                { "param": "indicator_group_id", "displayName": "Group ID", "type": "string" }
-              ],
-              "array": true
-            }
-          ]
-        }
-      ]
-    },
-    {
       "param": "sources",
       "displayName": "API Sources",
       "description": "Configured API sources",
@@ -252,14 +144,6 @@
           "type": "bool"
         },
         {
-          "param": "params",
-          "displayName": "Extra query params",
-          "description": "Additional query params to append",
-          "type": "struct",
-          "values": [],
-          "template": []
-        },
-        {
           "param": "enabled",
           "displayName": "Enabled",
           "description": "Enable this source",
@@ -284,95 +168,6 @@
       "dbName": "",
       "collection": "nbs_api_snapshots",
       "stateCollection": "nbs_sync_state"
-    },
-    "seeding": {
-      "enabled": true,
-      "collections": {
-        "indicatorGroups": "nbs_indicator_groups",
-        "indicators": "nbs_mnrt_indicators",
-        "adminAreas": "nbs_indicator_admin_areas",
-        "disaggregations": "nbs_disaggregations",
-        "institutions": "nbs_institutions",
-        "disaggregationsIndicators": "nbs_disaggregations_indicators",
-        "indicatorValues": "nbs_indicators_data_values"
-      },
-      "staticData": {
-        "indicatorGroups": [
-          { "id": 1, "name": "Total" },
-          { "id": 2, "name": "Gender" },
-          { "id": 3, "name": "Tour Arrangement" },
-          { "id": 4, "name": "Tourists" },
-          { "id": 5, "name": "Reserchers" },
-          { "id": 6, "name": "Currency" },
-          { "id": 7, "name": "Visitors" }
-        ],
-        "adminAreas": [
-          { "id": 1, "name": "Tanzania Mainland", "code": "TZM" },
-          { "id": 2, "name": "Tanganyika", "code": "TAN" },
-          { "id": 3, "name": "Karatu", "code": "KRT" },
-          { "id": 4, "name": "Mpanda", "code": "MPA" },
-          { "id": 5, "name": "Morogoro", "code": "MOR" },
-          { "id": 6, "name": "Kilombero", "code": "KILO" },
-          { "id": 7, "name": "Mlele", "code": "MLE" },
-          { "id": 8, "name": "Iringa", "code": "IRI" },
-          { "id": 9, "name": "Mbarali", "code": "MBA" },
-          { "id": 10, "name": "Chunya", "code": "CHU" },
-          { "id": 11, "name": "Singida", "code": "SIN" },
-          { "id": 12, "name": "Manyoni", "code": "MAN" },
-          { "id": 13, "name": "Bagamoyo", "code": "BAG" },
-          { "id": 14, "name": "Kilolo", "code": "KLO" },
-          { "id": 15, "name": "Arusha", "code": "ARU" },
-          { "id": 16, "name": "Babati", "code": "BAB" },
-          { "id": 17, "name": "Moshi", "code": "MOS" },
-          { "id": 18, "name": "Mwanga", "code": "MWA" },
-          { "id": 19, "name": "Ruangwa", "code": "RUAN" },
-          { "id": 20, "name": "Tarime", "code": "TAR" },
-          { "id": 21, "name": "Bunda", "code": "BUN" },
-          { "id": 22, "name": "Serengeti", "code": "SER" },
-          { "id": 23, "name": "Monduli", "code": "MON" },
-          { "id": 24, "name": "Bukoba", "code": "BUK" },
-          { "id": 25, "name": "Muleba", "code": "MUL" },
-          { "id": 26, "name": "Biharamulo", "code": "BIH" },
-          { "id": 27, "name": "Ngara", "code": "NGAR" },
-          { "id": 28, "name": "Kyerwa", "code": "KYER" },
-          { "id": 29, "name": "Tandahimba", "code": "TANH" },
-          { "id": 30, "name": "Newala", "code": "NEW" },
-          { "id": 31, "name": "Masasi", "code": "MAS" },
-          { "id": 32, "name": "Nanyumbu", "code": "NAN" },
-          { "id": 33, "name": "Mbulu", "code": "MBU" },
-          { "id": 34, "name": "Uvinza", "code": "UVI" },
-          { "id": 35, "name": "Hai", "code": "HAI" },
-          { "id": 36, "name": "Rombo", "code": "ROM" },
-          { "id": 37, "name": "Manyara", "code": "MYR" },
-          { "id": 38, "name": "Ruaha", "code": "RUA" },
-          { "id": 39, "name": "Mikumi", "code": "MIKU" },
-          { "id": 40, "name": "Gombe", "code": "GOM" },
-          { "id": 41, "name": "Tarangire", "code": "TARE" },
-          { "id": 42, "name": "Kilimanjaro", "code": "KLM" }
-        ],
-        "disaggregations": [
-          { "id": 1, "code": "DA001", "name": "Total", "indicator_group_id": 1 },
-          { "id": 2, "code": "DA005", "name": "Non Packaged", "indicator_group_id": 3 },
-          { "id": 3, "code": "DA002", "name": "Male", "indicator_group_id": 2 },
-          { "id": 4, "code": "DA003", "name": "Female", "indicator_group_id": 2 },
-          { "id": 5, "code": "DA004", "name": "Packaged", "indicator_group_id": 3 },
-          { "id": 6, "code": "DA006", "name": "International", "indicator_group_id": 4 },
-          { "id": 7, "code": "DA007", "name": "Domestic", "indicator_group_id": 4 },
-          { "id": 8, "code": "DA008", "name": "Foreigner", "indicator_group_id": 5 },
-          { "id": 9, "code": "DA009", "name": "Local", "indicator_group_id": 5 },
-          { "id": 10, "code": "DA010", "name": "TZS", "indicator_group_id": 6 },
-          { "id": 11, "code": "DA011", "name": "EURO", "indicator_group_id": 6 },
-          { "id": 12, "code": "DA012", "name": "USD", "indicator_group_id": 6 },
-          { "id": 13, "code": "DA013", "name": "Tourists", "indicator_group_id": 7 },
-          { "id": 14, "code": "DA014", "name": "Excursionists", "indicator_group_id": 7 },
-          { "id": 15, "code": "DA015", "name": "Business", "indicator_group_id": 7 },
-          { "id": 16, "code": "DA016", "name": "Visiting Friends and Relatives", "indicator_group_id": 7 },
-          { "id": 17, "code": "DA017", "name": "Transit", "indicator_group_id": 7 },
-          { "id": 18, "code": "DA018", "name": "Air", "indicator_group_id": 7 },
-          { "id": 19, "code": "DA019", "name": "Land", "indicator_group_id": 7 },
-          { "id": 20, "code": "DA020", "name": "Water", "indicator_group_id": 7 }
-        ]
-      }
     },
     "sources": [
       {

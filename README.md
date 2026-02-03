@@ -114,6 +114,22 @@ Known collections:
 - institutions
 - indicator-values
 
+Add admin areas (example):
+
+```bash
+curl -X POST "http://localhost:8095/api/v1/indicator-admin-areas" \
+  -H "Content-Type: application/json" \
+  -d '{"id": 43, "name": "New Area", "code": "NEW"}'
+```
+
+Update admin areas (example):
+
+```bash
+curl -X PATCH "http://localhost:8095/api/v1/indicator-admin-areas/43" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "New Area Updated", "code": "NEW"}'
+```
+
 Quick troubleshooting checks:
 
 ```bash
